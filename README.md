@@ -10,7 +10,7 @@
             sudo apt install docker.io -y; 
             sudo chmod 666 /var/run/docker.sock;
 
-            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd64
+            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd
         "
 ## Comando para crear la VM 2
     gcloud compute instances create vmrauqoz2 \
@@ -20,9 +20,9 @@
         --metadata startup-script="#! /bin/bash
             sudo apt update -y; 
             sudo apt install docker.io -y; 
-            sudo chmod 666 /var/run/docker.sock; 
+            sudo chmod 666 /var/run/docker.sock;
 
-            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd64
+            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd
         "
 ## Comando para crear la VM 3
     gcloud compute instances create vmrauqoz3 \
@@ -32,9 +32,9 @@
         --metadata startup-script="#! /bin/bash
             sudo apt update -y; 
             sudo apt install docker.io -y; 
-            sudo chmod 666 /var/run/docker.sock; 
+            sudo chmod 666 /var/run/docker.sock;
 
-            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd64
+            docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd
         "
 ## Listado de VM creadas
     gcloud compute instances list
@@ -60,3 +60,8 @@
         --target-pool rauqoztp
 ## Revisando la informacion del load balancer
     gcloud compute forwarding-rules describe rauqozre
+# Docker
+## Build
+    docker build --platform linux/amd64 -t rauqoz/gcp4hw:amd .
+## Run
+    docker run -d -p 80:3000 --name gcp4hw rauqoz/gcp4hw:amd 
